@@ -17,7 +17,7 @@ jobs:
       - name: github/CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languges: java-kotlin
+          languages: java-kotlin
           build-mode: none
           queries: security-and-quality
       - name: Perform CodeQL Analysis
