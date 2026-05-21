@@ -58,7 +58,9 @@ jobs:
         with:
          name: reportSCA
       - name: analaisis
-        run : jq '.dependency-check-report' dependency-check-report.json
+        run : |
+         ls
+         jq '.' dependency-check-report.json
             
 
 
