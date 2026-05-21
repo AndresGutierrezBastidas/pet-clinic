@@ -40,6 +40,7 @@ jobs:
           format: 'JSON'
           args: >
             --disableCentral
+            --failOnError true
             
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v7.0.1
@@ -47,16 +48,5 @@ jobs:
           name: reportSCA
           path: ${{github.workspace}}/reports
   
-  SCA_Analized:
-    needs: SCA
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Download report
-        uses: actions/download-artifact@v4
-        with:
-         name: reportSCA
-      - name: analaisis
-        run: ls
+
 
