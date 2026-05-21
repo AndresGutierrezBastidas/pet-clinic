@@ -41,12 +41,7 @@ jobs:
           args: >
             --disableCentral
             --failOnError true
+            --failBuildOnCVSS 4.0
             
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v7.0.1
-        with:
-          name: reportSCA
-          path: ${{github.workspace}}/reports
-  
 
 
