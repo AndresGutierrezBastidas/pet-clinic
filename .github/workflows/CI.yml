@@ -59,7 +59,7 @@ jobs:
          name: reportSCA
       - name: analaisis
         run : |
-         ls
+         ls 
          jq '.dependencies[0].evidenceCollected' dependency-check-report.json
             
 
