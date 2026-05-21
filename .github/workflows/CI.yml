@@ -50,8 +50,9 @@ jobs:
       - name: Download report
         uses: actions/download-artifact@v4
         with:
-         path: ${{github.workspace}}/reports
-         run : jq '.dependency-check-report' dependency-check-report.json
+         name: reportSCA
+      - name: analaisis
+        run : jq '.dependency-check-report' dependency-check-report.json
             
 
 
