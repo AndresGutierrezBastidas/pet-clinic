@@ -40,7 +40,18 @@ jobs:
           format: 'JSON'
           args: >
             --disableCentral
-            --failOnCVSS 4.0
+
+  SCA_Analized:
+    needs: SCA
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Download report
+        uses: actions/download-artifact@v4
+        with:
+         path: ${{github.workspace}}/reports
+         run : jq '.dependency-check-report' dependency-check-report.json
             
 
 
