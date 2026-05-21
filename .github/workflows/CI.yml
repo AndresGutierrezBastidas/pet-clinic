@@ -19,6 +19,10 @@ jobs:
           queries: security-and-quality
       - name: Perform CodeQL Analysis
         uses:  github/codeql-action/analyze@v4
-        with: 
+        with:
+          fail-on-severity: high
           category: "/language:java-kotlin"
+          
+       
+       
 
