@@ -43,7 +43,8 @@ jobs:
             
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v7.0.1
-        with: 
+        with:
+          name: reportSCA
           path: ${{github.workspace}}/reports
   
   SCA_Analized:
@@ -55,6 +56,7 @@ jobs:
       - name: Download report
         uses: actions/download-artifact@v4
         with:
-         path: ${{github.workspace}}/reports
-         run : ls
-        
+         name: reportSCA
+      - name: analaisis
+        run: ls
+
