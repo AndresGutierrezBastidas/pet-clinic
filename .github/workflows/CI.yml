@@ -60,7 +60,7 @@ jobs:
       - name: analaisis
         run : |
          ls 
-         jq 'if .dependencies[0].evidenceCollected.vendorEvidence[0].confidence=="HIGH" then echo exit -1 end' dependency-check-report.json
+         jq 'if .dependencies[0].evidenceCollected.vendorEvidence[0].confidence=="HIGH" then "echo exit -1 end"' dependency-check-report.json
             
 
 
