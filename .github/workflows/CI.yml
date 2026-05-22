@@ -63,7 +63,7 @@ jobs:
          vulnerabilities=$(jq '.dependencies[0].evidenceCollected.vendorEvidence[0].confidence' dependency-check-report.json)
          echo "$vulnerabilities"
          if [[ "$vulnerabilities" == '"HIGH"' ]]; then
-          echo -1
+          echo exit -1
          else
           echo "TODO bien"
          fi
