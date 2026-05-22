@@ -60,8 +60,7 @@ jobs:
       - name: analaisis
         run : |
          ls 
-         jq '.dependencies[0].evidenceCollected[0].confidence' dependency-check-report.json
-         jq '.dependencies[0].evidenceCollected[1].confidence' dependency-check-report.json
+         jq '.dependencies[0].evidenceCollected.vendorEvidence[0].confidence' dependency-check-report.json
             
 
 
