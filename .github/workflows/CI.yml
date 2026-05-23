@@ -63,7 +63,7 @@ jobs:
          vulnerabilities=$(jq -r '.dependencies[0].evidenceCollected.vendorEvidence[].confidence' dependency-check-report.json)
          readarray -t bash_vul <<< "$vulnerabilities"
          echo "${bash_vul[@]}"
-         for i in "${vulnerabilities[@]}"
+         for i in "${bash_vul[@]}"
          do
           if [[ "$i" == '"HIGH"' || "$i" == '"HIGHEST"' || "$i" == '"MEDIUM"' ]]; then
            echo "Vulnerabilidades criticas por resolver"
