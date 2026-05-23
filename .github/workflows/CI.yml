@@ -65,7 +65,7 @@ jobs:
          echo "${bash_vul[@]}"
          for i in "${bash_vul[@]}"
          do
-          if [[ "$i" == '"HIGH"' || "$i" == '"HIGHEST"' || "$i" == '"MEDIUM"' ]]; then
+          if [[ "$i" == 'HIGH' || "$i" == 'HIGHEST' || "$i" == 'MEDIUM' ]]; then
            echo "Vulnerabilidades criticas por resolver"
            exit 1
           else
