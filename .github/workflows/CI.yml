@@ -60,7 +60,11 @@ jobs:
       - name: analaisis
         run : |
          ls 
-         vulnerabilities=$(jq -r '.dependencies[0].evidenceCollected.vendorEvidence[].confidence' dependency-check-report.json)
+         vulnerabilities=$(jq -r '
+         .dependencies[0].evidenceCollected.vendorEvidence[].confidence,
+         .dependencies[0].evidenceCollected.vendorEvidence[].productEvidence,
+         .dependencies[0].evidenceCollected.vendorEvidence[].versionEvidence,
+         ' dependency-check-report.json)
          readarray -t bash_vul <<< "$vulnerabilities"
          echo "${bash_vul[@]}"
          for i in "${bash_vul[@]}"
