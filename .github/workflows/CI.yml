@@ -65,7 +65,7 @@ jobs:
          for i in "${vulnerabilities[@]}"
          do
           echo i
-          if [[ "$vulnerabilities" == '"HIGH"' || "$vulnerabilities" == '"HIGHEST"' || "$vulnerabilities" == '"MEDIUM"' ]]; then
+          if [[ "$i" == '"HIGH"' || "$i" == '"HIGHEST"' || "$i" == '"MEDIUM"' ]]; then
            echo "Vulnerabilidades criticas por resolver"
            exit 1
           else
