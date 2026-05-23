@@ -60,7 +60,7 @@ jobs:
       - name: analaisis
         run : |
          ls 
-         vulnerabilities=$(jq '.dependencies[0].evidenceCollected.vendorEvidence | .map(confidence)' dependency-check-report.json)
+         vulnerabilities=$(jq '.dependencies[0].evidenceCollected.vendorEvidence | map(.confidence)' dependency-check-report.json)
          echo "$vulnerabilities"
          for i in "${vulnerabilities[@]}"
          do
