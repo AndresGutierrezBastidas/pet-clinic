@@ -60,8 +60,12 @@ jobs:
       - name: analaisis
         run : |
          ls 
-         vulnerabilities=$(jq '.dependencies[0].evidenceCollected.vendorEvidence[0].confidence' dependency-check-report.json)
+         vulnerabilities=$(jq '.dependencies[0].evidenceCollected.vendorEvidence | .map(confidence)' dependency-check-report.json)
          echo "$vulnerabilities"
+         for i in "${vulnerabilities[@]}"
+         do
+          echo i
+         done
          if [[ "$vulnerabilities" == '"HIGH"' ]]; then
           exit 1
          else
