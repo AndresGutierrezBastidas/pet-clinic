@@ -60,8 +60,9 @@ jobs:
       - name: analaisis
         run : |
          ls 
-         vulnerabilities=$(-r jq '.dependencies[0].evidenceCollected.vendorEvidence[] | map(.confidence)' dependency-check-report.json)
-         echo "$vulnerabilities"
+         vulnerabilities=$(jq -r '.dependencies[0].evidenceCollected.vendorEvidence.confidence)' dependency-check-report.json)
+         readarray -t bash_vul <<< "$vulnerabilities"
+         echo "${bash_vul[@]}"
          for i in "${vulnerabilities[@]}"
          do
           if [[ "$i" == '"HIGH"' || "$i" == '"HIGHEST"' || "$i" == '"MEDIUM"' ]]; then
