@@ -76,5 +76,28 @@ jobs:
            echo "Sin vulnerabilidades criticas"
           fi
          done
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name : Docker login
+        uses: docker/login-action@v4.1.0
+        with:
+          username: ${{ secrets.USER_DOCKER }}
+          password: ${{ secrets.PASS_DOCKER }}
+      - name : Docker build
+        run: |
+          docker build --tag andresbastidasgutierrez/pet-clinic:lastes .
+      - name : Analisis
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: 'andresbastidasgutierrez/pet-clinic:lastes'
+          format: table
+          exit-code: 1
+          vunl-type: 'os, library'
+          severity: 'HIGH,CRITICAL,MEDIUM'
+      - name : Docker push
+        run: |
+          docker push andresbastidasgutierrez/pet-clinics:lastes       
          
 
