@@ -63,14 +63,12 @@ jobs:
          ls 
          vulnerabilities=$(jq -r '.dependencies[].vulnerabilities[0]?.severity' dependency-check-report.json)
          readarray -t bash_vul <<< "$vulnerabilities"
-         echo "${bash_vul[@]}"
          for i in "${bash_vul[@]}"
          do
           if [[ "$i" == 'HIGH' || "$i" == 'CRITICAL' || "$i" == 'MEDIUM' ]]; then
            echo "Vulnerabilidades criticas por resolver"
            exit 1
           else
-           echo "Sin vulnerabilidades criticas"
           fi
          done
   Build:
