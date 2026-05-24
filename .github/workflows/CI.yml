@@ -90,6 +90,7 @@ jobs:
           mvn -q -DskipTests package
      - name: Jar
        run: |
+          cd target
           ls
        
      - name: Upload Maven artifacts
