@@ -37,7 +37,7 @@ jobs:
         with:
           project: 'ms-catalog-content'
           path: '.'
-          format: 'JSON'
+          format: 'HTML'
           args: >
             --disableCentral
             --failOnCVSS 7
