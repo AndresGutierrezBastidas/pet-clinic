@@ -60,16 +60,12 @@ jobs:
       - name: analaisis
         run : |
          ls 
-         vulnerabilities=$(jq -r '
-         .dependencies[0].evidenceCollected.vendorEvidence[].confidence,
-         .dependencies[0].evidenceCollected.vendorEvidence[].productEvidence,
-         .dependencies[0].evidenceCollected.vendorEvidence[].versionEvidence,
-         ' dependency-check-report.json)
+         vulnerabilities=$(jq -r '.dependencies[0].vulnerabilities[].severity' dependency-check-report.json)
          readarray -t bash_vul <<< "$vulnerabilities"
          echo "${bash_vul[@]}"
          for i in "${bash_vul[@]}"
          do
-          if [[ "$i" == 'HIGH' || "$i" == 'HIGHEST' || "$i" == 'MEDIUM' ]]; then
+          if [[ "$i" == 'HIGH' || "$i" == 'CRITICAL' || "$i" == 'MEDIUM' ]]; then
            echo "Vulnerabilidades criticas por resolver"
            exit 1
           else
