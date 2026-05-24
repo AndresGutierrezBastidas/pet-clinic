@@ -90,7 +90,7 @@ jobs:
           mvn -q -DskipTests package
      - name: Jar
        run: |
-          cd target
+          cp target/spring-petclinic-2.6.0-SNAPSHOT.jar spring-petclinic-2.6.0-SNAPSHOT.jar
           ls
        
      - name: Upload Maven artifacts
