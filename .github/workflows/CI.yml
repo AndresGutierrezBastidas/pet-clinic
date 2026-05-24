@@ -92,7 +92,7 @@ jobs:
        uses: actions/upload-artifact@v4
        with:
           name: maven-build
-          path: /app/
+          path: .
           
   docker-build:
     needs: Build
@@ -110,6 +110,7 @@ jobs:
         with:
          name: maven-build
          path: .
+         run: ls
       - name : Docker build
         run: |
           docker build --tag andresbastidasgutierrez/pet-clinic:latest .
