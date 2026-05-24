@@ -84,7 +84,7 @@ jobs:
        uses: actions/setup-java@v4.2.1
        with:
          java-version: '17'
-         distribution: 'temuri'
+         distribution: 'temurin'
      - name: Mvn compile
        run: |
           mvn -q -DskipTests package
