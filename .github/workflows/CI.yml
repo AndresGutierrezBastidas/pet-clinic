@@ -40,6 +40,7 @@ jobs:
           format: 'JSON'
           args: >
             --disableCentral
+            --failOnCVSS 7
             
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v7.0.1
