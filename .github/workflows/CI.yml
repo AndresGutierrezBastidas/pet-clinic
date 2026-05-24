@@ -109,20 +109,18 @@ jobs:
         uses: actions/download-artifact@v4
         with:
          name: maven-build
-         path: /app/
+         path: .
       - name : Docker build
         run: |
-          docker build --tag andresbastidasgutierrez/pet-clinic:lastes .
+          docker build --tag andresbastidasgutierrez/pet-clinic:latest .
       - name : Analisis
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: 'andresbastidasgutierrez/pet-clinic:lastes'
+          image-ref: 'andresbastidasgutierrez/pet-clinic:latest'
           format: table
           exit-code: 1
           vunl-type: 'os, library'
           severity: 'HIGH,CRITICAL,MEDIUM'
-      - name : Docker push
-        run: |
-          docker push andresbastidasgutierrez/pet-clinics:lastes       
+            
          
 
