@@ -92,11 +92,11 @@ jobs:
        uses: actions/upload-artifact@v4
        with:
           name: maven-build
-          path: build/targe
+          path: /app/
           
   docker-build:
     needs: Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-lates
     steps:
       - uses: actions/checkout@v4
       - name : Docker login
@@ -104,6 +104,12 @@ jobs:
         with:
           username: ${{ secrets.USER_DOCKER }}
           password: ${{ secrets.PASS_DOCKER }}
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+         name: maven-build
+         path: /app/
       - name : Docker build
         run: |
           docker build --tag andresbastidasgutierrez/pet-clinic:lastes .
