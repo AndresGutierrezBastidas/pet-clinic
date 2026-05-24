@@ -68,7 +68,6 @@ jobs:
           if [[ "$i" == 'HIGH' || "$i" == 'CRITICAL' || "$i" == 'MEDIUM' ]]; then
            echo "Vulnerabilidades criticas por resolver"
            exit 1
-          else
           fi
          done
   Build:
